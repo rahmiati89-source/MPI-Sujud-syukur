@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MPI Sujud Syukur, Sahwi, dan Tilawah</title>
+<style>
+:root{--bg:#f3f7f4;--card:#fff;--ink:#16302b;--mut:#587068;--pri:#0f6b5c;--acc:#c9962b;--ok:#d9f2e4;--no:#fbdede;--line:#d3e0da}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1c19;--card:#18292560;--ink:#e6f1ed;--mut:#9bb5ad;--pri:#4fc2a9;--acc:#e3b64f;--ok:#1d4a39;--no:#552626;--line:#2c4540}}
+*{box-sizing:border-box}body{margin:0;font:17px/1.6 Georgia,"Noto Serif",serif;background:var(--bg);color:var(--ink)}
+header{padding:20px 16px 8px;max-width:860px;margin:auto}h1{margin:0;font-size:1.5rem}h1 small{display:block;font-size:.9rem;color:var(--mut);font-weight:normal}
+nav{display:flex;gap:6px;overflow-x:auto;padding:8px 16px;max-width:860px;margin:auto;position:sticky;top:0;background:var(--bg);z-index:5}
+nav button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;border-radius:20px;cursor:pointer;font:inherit;font-size:.85rem}
+nav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+main{max-width:860px;margin:auto;padding:8px 16px 48px}section{display:none}section.on{display:block}
+.c{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
+h2{margin:.6em 0 .2em;color:var(--pri)}h3{margin:.4em 0}
+.ar{font:2rem/2.2 "Amiri","Scheherazade New","Noto Naskh Arabic",serif;direction:rtl;text-align:center;color:var(--pri)}
+.lt{text-align:center;font-style:italic}.ar+.lt+p{text-align:center;color:var(--mut);margin-top:0}
+button.o,button.b,button.nx{font:inherit;cursor:pointer}
+button.o{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+button.o:hover:not(:disabled){border-color:var(--pri)}button.o.ok{background:var(--ok)}button.o.no{background:var(--no)}
+button.b,button.nx{background:var(--pri);color:#fff;border:0;border-radius:8px;padding:9px 16px;margin:6px 6px 0 0}
+.fb{margin-top:8px}.tabs{display:flex;gap:6px;flex-wrap:wrap}.tabs button{flex:1;min-width:110px}
+.tabs button:not(.on){background:transparent;color:var(--pri);border:1px solid var(--pri)}
+textarea,select{width:100%;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.sc{font-size:2rem;color:var(--acc)}.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri);width:0;transition:width .3s}
+.shake{animation:s .3s}@keyframes s{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}@media(prefers-reduced-motion:reduce){.shake{animation:none}}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style></head><body>
+<header><h1>Sujud Syukur, Sujud Sahwi, dan Sujud Tilawah<small>Media Pembelajaran Interaktif · Pendidikan Agama Islam</small></h1></header>
+<nav id="nav"></nav>
+<main>
+<section id="home"><div class="c"><h2>Selamat datang</h2><p>Media ini membantumu memahami <b>sebab, hukum, bacaan, dan tata cara</b> tiga macam sujud. Ikuti urutan menu dari kiri ke kanan.</p>
+<h3>Tujuan pembelajaran</h3><ol><li>Menjelaskan pengertian dan sebab sujud syukur, sahwi, dan tilawah.</li><li>Membedakan ketiganya dalam situasi nyata.</li><li>Mempraktikkan urutan tata cara dan bacaannya.</li></ol>
+<button class="b" onclick="go('apersepsi')">Mulai</button></div></section>
+
+<section id="apersepsi"><div class="c"><h2>Apersepsi</h2><p>Bayangkan tiga situasi ini:</p>
+<ol><li>Namamu diumumkan sebagai juara lomba yang sudah lama kamu impikan.</li><li>Saat salat Zuhur, kamu langsung berdiri ke rakaat ketiga padahal lupa duduk tahiyat awal.</li><li>Kamu sedang mengaji dan sampai pada ayat yang disebut ayat sajdah.</li></ol>
+<p>Apa yang sebaiknya kamu lakukan dalam setiap situasi? Pikirkan jawabanmu, lalu ketuk tombol di bawah.</p>
+<button class="b" onclick="this.nextElementSibling.hidden=false;this.hidden=true">Lihat petunjuk</button>
+<p hidden>Ketiganya dijawab dengan <b>sujud</b>, tetapi sebab dan caranya berbeda: <b>syukur</b> (nikmat), <b>sahwi</b> (lupa dalam salat), dan <b>tilawah</b> (ayat sajdah). Mari pelajari satu per satu.</p></div></section>
+
+<section id="awal"><div class="c"><h2>Asesmen awal</h2><p>Jawab tanpa melihat materi. Hasilnya tidak mengurangi nilaimu, hanya untuk mengetahui titik awalmu.</p><div id="qa"></div></div></section>
+
+<section id="materi"><div class="tabs" id="mt"></div><div class="c" id="mc"></div></section>
+
+<section id="simulasi"><div class="c"><h2>Simulasi 1: Pilih sujud yang tepat</h2><div id="s1"></div></div>
+<div class="c"><h2>Simulasi 2: Susun tata cara</h2><p>Pilih jenis sujud, lalu ketuk langkah sesuai urutan yang benar.</p>
+<select id="ss"><option value="">Pilih jenis sujud…</option><option value="syukur">Sujud syukur</option><option value="sahwi">Sujud sahwi</option><option value="tilawah">Sujud tilawah</option></select>
+<div class="bar" style="margin:10px 0"><i id="pb"></i></div><div id="s2"></div></div></section>
+
+<section id="kuis"><div class="c"><h2>Kuis</h2><p>Kamu langsung mendapat pembahasan setiap soal.</p><div id="qk"></div></div></section>
+<section id="akhir"><div class="c"><h2>Asesmen akhir</h2><p>Kerjakan dengan teliti. Skor dibandingkan dengan asesmen awal di menu Refleksi.</p><div id="qz"></div></div></section>
+
+<section id="refleksi"><div class="c"><h2>Refleksi</h2><p id="rs"></p>
+<label>1. Hal baru apa yang kamu pelajari?<textarea id="r1" rows="2"></textarea></label><br><br>
+<label>2. Bagian mana yang masih sulit?<textarea id="r2" rows="2"></textarea></label><br><br>
+<label>3. Kapan kamu akan menerapkannya dalam kehidupan sehari-hari?<textarea id="r3" rows="2"></textarea></label><br><br>
+<label>4. Tingkat pemahamanmu<select id="r4"><option>Sangat paham</option><option>Paham</option><option>Cukup paham</option><option>Perlu belajar lagi</option></select></label>
+<button class="b" onclick="dl()">Unduh refleksi (.txt)</button></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s);let pre=null,post=null,qk=null;
+const N=[["home","Beranda"],["apersepsi","Apersepsi"],["awal","Asesmen awal"],["materi","Materi"],["simulasi","Simulasi"],["kuis","Kuis"],["akhir","Asesmen akhir"],["refleksi","Refleksi"]];
+$("#nav").innerHTML=N.map(n=>`<button data-i="${n[0]}" onclick="go('${n[0]}')">${n[1]}</button>`).join("");
+function go(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id==id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.i==id));if(id=="refleksi")rs();scrollTo(0,0)}
+function quiz(el,qs,inst,done){let i=0,s=0;(function r(){if(i>=qs.length){el.innerHTML=`<p>Skor kamu</p><div class="sc">${Math.round(s/qs.length*100)}</div><p>${s} dari ${qs.length} soal benar.</p><button class="b" id="ul">Ulangi</button>`;$("#ul",el)||0;el.querySelector("#ul").onclick=()=>quiz(el,qs,inst,done);done(Math.round(s/qs.length*100));return}
+const q=qs[i];el.innerHTML=`<p><b>Soal ${i+1} dari ${qs.length}.</b> ${q[0]}</p>`+q[1].map((o,k)=>`<button class="o" data-k="${k}">${o}</button>`).join("")+`<div class="fb"></div>`;
+el.querySelectorAll(".o").forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==q[2];if(ok)s++;
+if(inst){el.querySelectorAll(".o").forEach(x=>{x.disabled=true;if(+x.dataset.k==q[2])x.classList.add("ok")});if(!ok)b.classList.add("no");el.querySelector(".fb").innerHTML=(ok?"Benar. ":"Belum tepat. ")+q[3]+'<br><button class="nx">Lanjut</button>';el.querySelector(".nx").onclick=()=>{i++;r()}}else{i++;r()}})})()}
+const A=[["Sujud yang dilakukan karena mendapat nikmat atau selamat dari bahaya disebut …",["Sujud syukur","Sujud sahwi","Sujud tilawah","Sujud sajadah"],0],
+["Sujud sahwi dilakukan karena …",["Mendengar azan","Lupa atau ragu dalam salat","Membaca Al-Qur'an","Mendapat rezeki"],1],
+["Sujud yang dilakukan ketika membaca atau mendengar ayat sajdah adalah …",["Sujud syukur","Sujud sahwi","Sujud tilawah","Sujud syahwi"],2],
+["Sujud sahwi dilakukan sebanyak …",["Satu kali","Dua kali","Tiga kali","Empat kali"],1],
+["Sujud syukur dilakukan …",["Di dalam salat fardu","Di luar salat","Hanya saat berhaji","Hanya pada hari Jumat"],1]];
+const K=[["Rina lupa duduk tahiyat awal dan baru sadar setelah berdiri sempurna. Ia melakukan …",["Sujud syukur","Sujud sahwi","Sujud tilawah","Mengulang dari awal wudu"],1,"Meninggalkan tahiyat awal (sunah ab'ad) disunahkan ditutup dengan sujud sahwi."],
+["Bacaan sujud sahwi yang umum diajarkan adalah …",["Subhana man la yanamu wa la yashu","Subhana rabbiyal 'azhim","Allahu akbar kabira","Rabbana atina fid-dunya"],0,"Artinya: Maha Suci Dzat yang tidak tidur dan tidak lupa."],
+["Menurut mazhab Syafi'i, jumlah ayat sajdah dalam Al-Qur'an adalah …",["4","10","14","30"],2,"Mazhab Syafi'i menghitung 14 ayat, termasuk dua ayat di Surah Al-Hajj. Ada perbedaan hitungan antarmazhab."],
+["Ahmad mendapat kabar lolos seleksi beasiswa. Ia bersujud sebagai tanda terima kasih kepada Allah. Sujud itu adalah …",["Sujud sahwi","Sujud syukur","Sujud tilawah","Sujud sunah rawatib"],1,"Sebabnya nikmat, maka disebut sujud syukur."],
+["Saat salat ragu apakah sudah tiga atau empat rakaat, seseorang mengambil yang lebih yakin, menyempurnakan salat, lalu …",["Langsung salam","Sujud sahwi sebelum salam","Membatalkan salat","Sujud tilawah"],1,"Dalam mazhab Syafi'i sujud sahwi dilakukan setelah tasyahud akhir dan sebelum salam."]];
+const Z=[["Hukum sujud tilawah adalah …",["Wajib","Sunah","Makruh","Haram"],1,"Sujud tilawah hukumnya sunah."],
+["Sujud sahwi dilakukan pada bagian salat …",["Sebelum takbiratul ihram","Setelah tasyahud akhir, sebelum salam","Setelah salam kedua","Saat rukuk"],1,"Mazhab Syafi'i: sebelum salam."],
+["Seseorang selamat dari kecelakaan lalu bersujud berterima kasih. Ini sujud …",["Syukur","Sahwi","Tilawah","Sunah"],0,"Selamat dari bahaya adalah sebab sujud syukur."],
+["Arti bacaan 'Sajada wajhiya lilladzi khalaqahu …' adalah …",["Wajahku bersujud kepada Dzat yang menciptakannya","Maha Suci Tuhanku Yang Maha Tinggi","Maha Suci Dzat yang tidak lupa","Ya Allah, ampunilah aku"],0,"Itu bacaan sujud tilawah."],
+["Seseorang tidak sengaja menambah satu rukuk dalam salat. Yang dilakukan setelah tasyahud akhir adalah …",["Sujud sahwi","Sujud syukur","Sujud tilawah","Tidak perlu apa-apa"],0,"Menambah gerakan salat karena lupa ditutup dengan sujud sahwi."],
+["Perbedaan utama ketiga sujud terletak pada …",["Arah kiblat","Sebab dilakukannya","Jumlah rakaat","Waktu salat"],1,"Syukur karena nikmat, sahwi karena lupa dalam salat, tilawah karena ayat sajdah."]];
+const S=[["Kamu dinyatakan sembuh dari sakit yang lama. Sujud apa yang sesuai?",["Syukur","Sahwi","Tilawah"],0,"Nikmat kesembuhan: sujud syukur."],
+["Di tengah salat kamu lupa membaca qunut pada salat Subuh (mazhab Syafi'i).",["Syukur","Sahwi","Tilawah"],1,"Qunut Subuh termasuk sunah ab'ad, ditutup sujud sahwi."],
+["Kamu membaca Surah As-Sajdah ayat 15 pada tilawah harian.",["Syukur","Sahwi","Tilawah"],2,"Ayat sajdah: sujud tilawah."],
+["Kamu mendengar temanmu membaca ayat sajdah dengan baik.",["Syukur","Sahwi","Tilawah"],2,"Mendengar ayat sajdah juga menyunahkan sujud tilawah."],
+["Kamu ragu sudah dua atau tiga rakaat dalam salat Magrib.",["Syukur","Sahwi","Tilawah"],1,"Ragu jumlah rakaat: sujud sahwi."],
+["Keluargamu selamat dari banjir.",["Syukur","Sahwi","Tilawah"],0,"Selamat dari bahaya: sujud syukur."]];
+const M={syukur:["Sujud syukur","<p><b>Pengertian.</b> Sujud sebagai ungkapan terima kasih kepada Allah.</p><p><b>Sebab.</b> Mendapat nikmat baru atau selamat dari bahaya.</p><p><b>Hukum.</b> Sunah.</p><p><b>Tempat.</b> Di luar salat. Tidak dilakukan di dalam salat.</p><p><b>Tata cara.</b> Niat, takbir, sujud sambil membaca bacaan, bangun dari sujud sambil takbir, lalu salam. Sebagian ulama mencukupkan satu sujud tanpa salam, jadi ikuti arahan gurumu.</p>","سُبْحَانَ رَبِّيَ الْأَعْلَى وَبِحَمْدِهِ","Subhana rabbiyal a'la wa bihamdih","Maha Suci Tuhanku Yang Maha Tinggi dan dengan memuji-Nya."],
+sahwi:["Sujud sahwi","<p><b>Pengertian.</b> Dua kali sujud untuk menambal kekurangan atau kelebihan dalam salat karena lupa.</p><p><b>Sebab.</b> Meninggalkan sunah ab'ad (misalnya tahiyat awal, qunut Subuh), menambah gerakan, atau ragu jumlah rakaat.</p><p><b>Hukum.</b> Sunah.</p><p><b>Waktu (mazhab Syafi'i).</b> Setelah tasyahud akhir dan sebelum salam.</p><p><b>Tata cara.</b> Selesai tasyahud akhir, takbir lalu sujud, duduk di antara dua sujud, sujud kedua, duduk, lalu salam.</p>","سُبْحَانَ مَنْ لَا يَنَامُ وَلَا يَسْهُو","Subhana man la yanamu wa la yashu","Maha Suci Dzat yang tidak tidur dan tidak lupa."],
+tilawah:["Sujud tilawah","<p><b>Pengertian.</b> Sujud saat membaca atau mendengar ayat sajdah.</p><p><b>Hukum.</b> Sunah, bagi pembaca dan pendengar.</p><p><b>Ayat sajdah (14 menurut mazhab Syafi'i).</b> Al-A'raf 206, Ar-Ra'd 15, An-Nahl 49, Al-Isra' 107, Maryam 58, Al-Hajj 18 dan 77, Al-Furqan 60, An-Naml 25, As-Sajdah 15, Fussilat 37, An-Najm 62, Al-Insyiqaq 21, Al-'Alaq 19. Hitungan dapat berbeda antarmazhab.</p><p><b>Tata cara di luar salat.</b> Niat, takbir, sujud sambil membaca bacaan, bangun sambil takbir, lalu salam. Di dalam salat, cukup takbir turun sujud dan kembali berdiri.</p>","سَجَدَ وَجْهِيَ لِلَّذِي خَلَقَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ","Sajada wajhiya lilladzi khalaqahu wa syaqqa sam'ahu wa basharahu bihaulihi wa quwwatih","Wajahku bersujud kepada Dzat yang menciptakannya, membuka pendengaran dan penglihatannya dengan daya dan kekuatan-Nya."]};
+$("#mt").innerHTML=Object.keys(M).map(k=>`<button class="b" data-k="${k}">${M[k][0]}</button>`).join("");
+function mat(k){document.querySelectorAll("#mt button").forEach(b=>b.classList.toggle("on",b.dataset.k==k));const m=M[k];$("#mc").innerHTML=`<h2>${m[0]}</h2>${m[1]}<h3>Bacaan</h3><div class="ar" lang="ar">${m[2]}</div><div class="lt">${m[3]}</div><p>${m[4]}</p>`}
+document.querySelectorAll("#mt button").forEach(b=>b.onclick=()=>mat(b.dataset.k));mat("syukur");
+const T={syukur:["Niat sujud syukur","Takbir lalu sujud","Membaca bacaan sujud syukur","Bangun sambil takbir","Salam"],sahwi:["Menyelesaikan tasyahud akhir","Takbir lalu sujud pertama","Membaca bacaan sujud sahwi","Duduk di antara dua sujud","Sujud kedua","Duduk lalu salam"],tilawah:["Membaca atau mendengar ayat sajdah","Niat sujud tilawah","Takbir lalu sujud","Membaca bacaan sujud tilawah","Bangun sambil takbir","Salam"]};
+$("#ss").onchange=function(){const k=this.value,el=$("#s2");$("#pb").style.width="0";if(!k){el.innerHTML="";return}let n=0;const st=T[k],mix=st.map((t,i)=>[t,i]).sort(()=>Math.random()-.5);
+el.innerHTML='<div class="fb" id="sf">Pilih langkah pertama.</div>'+mix.map(m=>`<button class="o" data-i="${m[1]}">${m[0]}</button>`).join("");
+el.querySelectorAll(".o").forEach(b=>b.onclick=()=>{if(+b.dataset.i==n){b.disabled=true;b.classList.add("ok");n++;$("#pb").style.width=n/st.length*100+"%";$("#sf").textContent=n==st.length?"Urutan sudah benar. Kamu siap mencoba praktik.":"Tepat. Langkah berikutnya?"}else{b.classList.add("shake","no");setTimeout(()=>b.classList.remove("shake","no"),400);$("#sf").textContent="Belum tepat. Coba langkah lain."}})};
+quiz($("#qa"),A.map(q=>[q[0],q[1],q[2],""]),false,s=>pre=s);quiz($("#s1"),S,true,()=>{});quiz($("#qk"),K,true,s=>qk=s);quiz($("#qz"),Z,true,s=>post=s);
+function rs(){$("#rs").innerHTML=`Asesmen awal: <b>${pre??"belum dikerjakan"}</b> · Kuis: <b>${qk??"-"}</b> · Asesmen akhir: <b>${post??"belum dikerjakan"}</b>`+(pre!=null&&post!=null?`<br>Perubahan nilai: <b>${post-pre>=0?"+":""}${post-pre}</b>`:"")}
+function dl(){const t=`REFLEKSI SUJUD SYUKUR, SAHWI, TILAWAH\nAsesmen awal: ${pre??"-"}\nKuis: ${qk??"-"}\nAsesmen akhir: ${post??"-"}\n\n1. Hal baru: ${$("#r1").value}\n2. Yang masih sulit: ${$("#r2").value}\n3. Penerapan: ${$("#r3").value}\n4. Tingkat pemahaman: ${$("#r4").value}\n`;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));a.download="refleksi.txt";a.click()}
+go("home");
+</script></body></html>
